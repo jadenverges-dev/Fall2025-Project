@@ -27,6 +27,8 @@ public class HitboxProperties : MonoBehaviour
     private List<GameObject> hurtEnemies = new List<GameObject>();
     private List<GameObject> inRange = new List<GameObject>();
 
+    public int damageBoost = 0;
+
 
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -58,7 +60,7 @@ public class HitboxProperties : MonoBehaviour
                         if (enemyHP != null)
                         {
                             hurtEnemies.Add(enemy);
-                            enemyHP.TakeDamage(damage);
+                            enemyHP.TakeDamage(damage + damageBoost);
                             //apply force backwards to enemy
                             bool onLeft;
                             if (this.gameObject.transform.parent.position.x < playerKnockbackController.gameObject.transform.position.x)
